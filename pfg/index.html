@@ -1,9 +1,37 @@
+<!DOCTYPE html>
 <html>
-  <title>Page</title>
-  <script>
-    window.location.href = "https://mahjongg4u.com";
-  </script>
-  <body>
-    if you still see this you need to enable javascript.
-  </body>
+<head>
+    <title>URL Redirect Parser</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Redirecting...</h2>
+
+    <script>
+        // Get current URL parameters
+        const params = new URLSearchParams(window.location.search);
+
+        // Convert parameters to an object (optional)
+        let paramObject = {};
+        params.forEach((value, key) => {
+            paramObject[key] = value;
+        });
+
+        // ---- Customize your new base URL here ----
+        const newBaseUrl = "https://mahjongg4u.com";
+
+        // Rebuild query string
+        const newQueryString = params.toString();
+
+        // Construct final redirect URL
+        const redirectUrl = newQueryString
+            ? `${newBaseUrl}?${newQueryString}`
+            : newBaseUrl;
+
+        console.log("Redirecting to:", redirectUrl);
+
+        // Redirect
+        window.location.href = redirectUrl;
+    </script>
+</body>
 </html>
